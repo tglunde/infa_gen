@@ -1,0 +1,228 @@
+{% macro hubname(subject_area,cbc) %}{{subject_area | upper | replace({' ':"_"})}}_{{cbc.cbc | upper | replace({' ':"_"})}}{% endmacro %}
+{% macro lnkname(subject_area,nbr) %}{{subject_area | upper | replace({' ':"_"})}}_{{nbr.nbr | upper | replace({' ':"_"})}}{% endmacro %}
+{% macro hubtable(subject_area,cbc) %}{{hubname(subject_area,cbc)}}_H{% endmacro %}
+{% macro sattable(subject_area,cbc,context) %}{{hubname(subject_area,cbc)}}_{{context.contextname | upper}}_S{% endmacro %}
+{% macro lnktable(subject_area, nbr) %}{{lnkname(subject_area,nbr)}}_L{% endmacro %}
+{% macro projlist(columns) %}
+	{%- for column in columns %}
+        {{column.name | upper}}{% if not loop.last %},{% endif -%}
+    {% endfor -%}
+{% endmacro %}
+{% macro columnlist(columns) %}
+	{%- for column in columns %}
+        {% if column.type == "VARCHAR" %}
+           {{column.name}} {{column.type}}({{column.size-}})
+        {% elseif column.type == "BIGINT" %}
+           {{ column.name }} {{ column.type }}
+        {% elseif column.type == "INTEGER" %}
+           {{ column.name }} {{ column.type }}
+        {% elseif column.type == "SMALLINT" %}
+           {{ column.name }} {{ column.type }}
+        {% elseif column.type == "TIMESTAMP" %}
+           {{ column.name }} {{ column.type }}
+        {% elseif column.type == "DATE" %}
+           {{ column.name }} {{ column.type }}
+        {% elseif column.type == "DECIMAL" %}
+           {{ column.name }} DECIMAL(19,6)
+        {% else %}
+            UNSUPPORTED TYPE {{column.type}}
+        {% endif %}
+        {% if not loop.last %},{% endif -%}
+    {% endfor -%}
+{% endmacro %}
+{% macro connectorFieldTgt(columns,source_table,target_table) %}
+    {%- for column in columns %}
+<CONNECTOR FROMFIELD ="{{column.name}}" FROMINSTANCE ="SQ_{{source_table}}" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="{{column.name}}" TOINSTANCE ="{{target_table}}" TOINSTANCETYPE ="Target Definition"/>
+    {% endfor -%}
+{% endmacro%}
+{% macro connectorFieldSrc(columns,source_table,target_table) %}
+    {%- for column in columns %}
+<CONNECTOR FROMFIELD ="{{column.name}}" FROMINSTANCE ="{{source_table}}" FROMINSTANCETYPE ="Source Definition" TOFIELD ="{{column.name}}" TOINSTANCE ="SQ_{{source_table}}" TOINSTANCETYPE ="Source Qualifier"/>
+    {% endfor -%}
+{% endmacro %}
+{% macro transformField(columns) %}
+    {%- for column in columns %}
+        {% set precision=column.size %}
+        {% set scale=0 %}
+        {% if column.type == "VARCHAR" %}
+        {% set datatype = "string" %}
+        {% elseif column.type == "BIGINT" %}
+        {% set datatype = "bigint" %}
+        {% set precision=19 %}
+        {% elseif column.type == "INTEGER" %}
+        {% set datatype = "integer" %}
+        {% set precision=10 %}
+        {% elseif column.type == "SMALLINT" %}
+        {% set datatype = "small integer" %}
+        {% set precision=5 %}
+        {% set length=5 %}
+        {% set scale=0 %}
+        {% elseif column.type == "TIMESTAMP" %}
+        {% set datatype = "date/time" %}
+        {% set precision=29 %}
+        {% set scale=9 %}
+        {% elseif column.type == "DATE" %}
+        {% set datatype = "date/time" %}
+        {% set precision=29 %}
+        {% set scale=9 %}
+        {% elseif column.type == "DECIMAL" %}
+        {% set datatype = "decimal" %}
+        {% set precision = column.precisionRadix %}
+        {% set scale = column.scale %}
+        {% elseif column.type == "DOUBLE" %}
+        {% set datatype = "decimal" %}
+        {% set precision = column.precisionRadix %}
+        {% set scale = column.scale %}
+        {% else %}
+        UNSUPPORTED TYPE {{column.type}}
+        {% endif %}
+        {% if column.required %}
+        {% set nullable = "NOTNULL" %}
+        {% else %}
+        {% set nullable = "NULL" %}
+        {% endif %}
+<TRANSFORMFIELD DATATYPE ="{{datatype}}" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="{{column.name}}" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="{{precision}}" SCALE ="{{scale}}"/>
+    {% endfor -%}
+{% endmacro %}
+{% macro sourceFieldSQLServer(columns) %}
+    {%- for column in columns %}
+        {% set precision=column.size %}
+        {% set length=column.size %}
+        {% set scaling=0 %}
+        {% if column.type == "VARCHAR" %}
+        {% set datatype = "varchar" %}
+        {% elseif column.type == "BIGINT" %}
+        {% set datatype = "bigint" %}
+        {% set precision=19 %}
+        {% set length=10 %}
+        {% elseif column.type == "INTEGER" %}
+        {% set datatype = "int" %}
+        {% set precision=10 %}
+        {% set length=10 %}
+        {% elseif column.type == "SMALLINT" %}
+        {% set datatype = "smallint" %}
+        {% set precision=5 %}
+        {% set length=5 %}
+        {% elseif column.type == "TIMESTAMP" %}
+            {% set datatype = "datetime" %}
+            {% set length=19 %}
+            {% set precision=23 %}
+            {% set scaling=3 %}
+        {% elseif column.type == "DATE" %}
+            {% set datatype = "datetime" %}
+            {% set length=19 %}
+            {% set precision=23 %}
+            {% set scaling=3 %}
+        {% elseif column.type == "DECIMAL" %}
+            {% set datatype = "decimal" %}
+            {% set precision = column.precisionRadix %}
+            {% set length = column.precisionRadix %}
+            {% set scaling = column.scale %}
+        {% elseif column.type == "DOUBLE" %}
+            {% set datatype = "decimal" %}
+            {% set precision = column.precisionRadix %}
+            {% set length = column.precisionRadix %}
+            {% set scaling = column.scale %}
+        {% else %}
+            UNSUPPORTED TYPE {{column.type}}
+        {% endif %}
+        {% if column.required %}
+        {% set nullable = "NOTNULL" %}
+        {% else %}
+        {% set nullable = "NULL" %}
+        {% endif %}
+<SOURCEFIELD BUSINESSNAME ="" DATATYPE ="{{datatype}}" DESCRIPTION ="" FIELDNUMBER ="{{loop.index+1}}" FIELDPROPERTY ="0" FIELDTYPE ="ELEMITEM" HIDDEN ="NO" KEYTYPE ="NONE" LENGTH ="{{length}}" LEVEL ="0" NAME ="{{column.name}}" NULLABLE ="{{nullable}}" OCCURS ="0" OFFSET ="0" PHYSICALLENGTH ="{{precision}}" PHYSICALOFFSET ="0" PICTURETEXT ="" PRECISION ="{{precision}}" SCALE ="{{scaling}}" USAGE_FLAGS =""/>
+    {% endfor -%}
+{% endmacro %}
+{% macro sourceFieldDB2(columns) %}
+        {%- for column in columns %}
+        {% set precision=column.size %}
+        {% set length=column.size %}
+        {% set scaling=0 %}
+        {% if column.type == "VARCHAR" %}
+        {% set datatype = "varchar" %}
+        {% elseif column.type == "BIGINT" %}
+        {% set datatype = "bigint" %}
+        {% set precision=19 %}
+        {% set length=10 %}
+        {% elseif column.type == "INTEGER" %}
+        {% set datatype = "integer" %}
+        {% set precision=10 %}
+        {% set length=10 %}
+        {% elseif column.type == "SMALLINT" %}
+        {% set datatype = "smallint" %}
+        {% set precision=5 %}
+        {% set length=5 %}
+        {% elseif column.type == "TIMESTAMP" %}
+        {% set datatype = "timestamp" %}
+        {% set length=19 %}
+        {% set precision=26 %}
+        {% set scaling=6 %}
+        {% elseif column.type == "DATE" %}
+        {% set datatype = "timestamp" %}
+        {% set length=19 %}
+        {% set precision=26 %}
+        {% set scaling=6 %}
+        {% elseif column.type == "DECIMAL" %}
+        {% set datatype = "decimal" %}
+        {% set precision = column.precisionRadix %}
+        {% set length = column.precisionRadix %}
+        {% set scaling = column.scale %}
+        {% elseif column.type == "DOUBLE" %}
+        {% set datatype = "decimal" %}
+        {% set precision = column.precisionRadix %}
+        {% set length = column.precisionRadix %}
+        {% set scaling = column.scale %}
+        {% else %}
+        UNSUPPORTED TYPE {{column.type}}
+        {% endif %}
+        {% if column.required %}
+        {% set nullable = "NOTNULL" %}
+        {% else %}
+        {% set nullable = "NULL" %}
+        {% endif %}
+<SOURCEFIELD BUSINESSNAME ="" DATATYPE ="{{datatype}}" DESCRIPTION ="" FIELDNUMBER ="{{loop.index+1}}" FIELDPROPERTY ="0" FIELDTYPE ="ELEMITEM" HIDDEN ="NO" KEYTYPE ="NONE" LENGTH ="{{length}}" LEVEL ="0" NAME ="{{column.name}}" NULLABLE ="{{nullable}}" OCCURS ="0" OFFSET ="0" PHYSICALLENGTH ="{{precision}}" PHYSICALOFFSET ="0" PICTURETEXT ="" PRECISION ="{{precision}}" SCALE ="{{scaling}}" USAGE_FLAGS =""/>
+        {% endfor -%}
+{% endmacro %}
+{% macro targetField(columns) %}
+    {%- for column in columns %}
+        {% set precision=column.size %}
+        {% set scale=0 %}
+        {% if column.type == "VARCHAR" %}
+            {% set datatype = "varchar" %}
+        {% elseif column.type == "BIGINT" %}
+            {% set datatype = "bigint" %}
+            {% set precision=19 %}
+        {% elseif column.type == "INTEGER" %}
+        {% set datatype = "integer" %}
+        {% set precision=10 %}
+        {% elseif column.type == "SMALLINT" %}
+            {% set datatype = "smallint" %}
+            {% set precision=5 %}
+        {% elseif column.type == "TIMESTAMP" %}
+            {% set datatype = "timestamp" %}
+            {% set precision=26 %}
+            {% set scale=6 %}
+        {% elseif column.type == "DATE" %}
+            {% set datatype = "timestamp" %}
+            {% set precision=26 %}
+            {% set scale=6 %}
+        {% elseif column.type == "DECIMAL" %}
+            {% set datatype="decimal" %}
+            {% set precision=column.precisionRadix %}
+            {% set scale=column.scale %}
+        {% elseif column.type == "DOUBLE" %}
+            {% set datatype="decimal" %}
+            {% set precision=column.precisionRadix %}
+            {% set scale=column.scale %}
+        {% else %}
+            UNSUPPORTED TYPE {{column.type}}
+        {% endif %}
+        {% if column.required %}
+            {% set nullable = "NOTNULL" %}
+        {% else %}
+            {% set nullable = "NULL" %}
+        {% endif %}
+<TARGETFIELD BUSINESSNAME ="" DATATYPE ="{{datatype}}" DESCRIPTION ="" FIELDNUMBER ="{{loop.index+1}}" KEYTYPE ="NOT A KEY" NAME ="{{column.name}}" NULLABLE ="{{nullable}}" PICTURETEXT ="" PRECISION ="{{precision}}" SCALE ="{{scale}}"/>
+    {% endfor -%}
+{% endmacro %}

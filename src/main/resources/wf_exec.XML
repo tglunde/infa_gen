@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE POWERMART SYSTEM "powrmart.dtd">
+<POWERMART CREATION_DATE="03/06/2019 20:38:19" REPOSITORY_VERSION="187.96">
+<REPOSITORY NAME="{{infa_repo}}" VERSION="187" CODEPAGE="Latin1" DATABASETYPE="{{infa_dbtype}}">
+<FOLDER NAME="{{infa_folder}}" GROUP="" OWNER="reptui" SHARED="NOTSHARED" DESCRIPTION="Folder fuer die Beladung der CRM Kampagnendatenbank" PERMISSIONS="rwx------" UUID="de018f72-4a00-4ac4-a73f-aa412ad9792c">
+    <MAPPING DESCRIPTION ="" ISVALID ="YES" NAME ="{{map_name}}" OBJECTVERSION ="1" VERSIONNUMBER ="1">
+        <TRANSFORMATION COMPONENTVERSION ="1000000" DESCRIPTION ="" NAME ="SQL" OBJECTVERSION ="1" REUSABLE ="NO" TEMPLATEID ="310800" TEMPLATENAME ="SQL Transform" TYPE ="Custom Transformation" VERSIONNUMBER ="1">
+            <GROUP DESCRIPTION ="" NAME ="SQLInputs" ORDER ="1" TYPE ="INPUT"/>
+            <GROUP DESCRIPTION ="" NAME ="SQLOutputs" ORDER ="2" TYPE ="OUTPUT"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="SQLInputs" NAME ="DUMMY" OUTPUTGROUP ="SQLInputs" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="10" SCALE ="0">
+                <TRANSFORMFIELDATTR NAME ="SQLT_PORT_ATTRIBUTE" VALUE ="2"/>
+                <TRANSFORMFIELDATTR NAME ="SQLT_PORT_NATIVE_TYPE" VALUE ="char"/>
+            </TRANSFORMFIELD>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="SQLOutputs" NAME ="SQLError" OUTPUTGROUP ="SQLOutputs" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="4096" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" GROUP ="SQLOutputs" NAME ="NumRowsAffected" OUTPUTGROUP ="SQLOutputs" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Language" VALUE ="C++"/>
+            <TABLEATTRIBUTE NAME ="Module Identifier" VALUE ="sqltransform"/>
+            <TABLEATTRIBUTE NAME ="Class Name" VALUE ="SQLPluginDriver"/>
+            <TABLEATTRIBUTE NAME ="Function Identifier" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Runtime Location" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+            <TABLEATTRIBUTE NAME ="Is Partitionable" VALUE ="Across Grid"/>
+            <TABLEATTRIBUTE NAME ="Inputs Must Block" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Is Active" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Update Strategy Transformation" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Transformation Scope" VALUE ="Row"/>
+            <TABLEATTRIBUTE NAME ="Generate Transaction" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Output Is Repeatable" VALUE ="Based On Input Order"/>
+            <TABLEATTRIBUTE NAME ="Requires Single Thread Per Partition" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Output Is Deterministic" VALUE ="YES"/>
+            <TABLEATTRIBUTE NAME ="Preserves Data Set Boundary" VALUE ="No"/>
+            <INITPROP DESCRIPTION ="" NAME ="Programmatic Identifier for Class Factory" USERDEFINED ="NO" VALUE =""/>
+            <INITPROP DESCRIPTION ="" NAME ="Constructor" USERDEFINED ="NO" VALUE =""/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Auto_Commit" VALUE ="FALSE" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="NUMERIC" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="1" NAME ="Connection_Type" VALUE ="0" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="NUMERIC" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="1" NAME ="DB_Type" VALUE ="4" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Is_Continue_On_Error_Selected" VALUE ="FALSE" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Is_Stats_Option_Selected" VALUE ="TRUE" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="NUMERIC" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Max_conn_pool" VALUE ="10" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="NUMERIC" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="0" NAME ="Max_Out_Row_Count" VALUE ="10000" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="2147483647" NAME ="Query_Description" VALUE ="" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="1000" NAME ="Script_Locale" VALUE ="" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="NUMERIC" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="1" NAME ="SQL_Mode" VALUE ="0" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="2147483647" NAME ="SQL_Query" VALUE ="{{sql_query}}" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Treat_DB_Conn_Failure_As_Fatal" VALUE ="TRUE" VENDORNAME ="INFORMATICA"/>
+            <METADATAEXTENSION COMPONENTVERSION ="1000000" DATATYPE ="STRING" DESCRIPTION ="" DOMAINNAME ="SQL_Transform" ISCLIENTEDITABLE ="NO" ISCLIENTVISIBLE ="NO" ISREUSABLE ="YES" ISSHAREREAD ="YES" ISSHAREWRITE ="YES" MAXLENGTH ="6" NAME ="Use_conn_pool" VALUE ="FALSE" VENDORNAME ="INFORMATICA"/>
+            <TRANSFORMFIELDATTRDEF DATATYPE ="STRING" DEFAULTVALUE ="0" DESCRIPTION ="" NAME ="SQLT_PORT_ATTRIBUTE" ORDER ="0" TYPE ="NUMERIC"/>
+            <TRANSFORMFIELDATTRDEF DATATYPE ="STRING" DESCRIPTION ="" NAME ="SQLT_PORT_NATIVE_TYPE" ORDER ="1" TYPE ="STRING"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="EX_handle_error" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Expression" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="SQLError" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="4096" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="NumRowsAffected" PICTURETEXT ="" PORTTYPE ="INPUT" PRECISION ="10" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="ERROR(&apos;transformation error&apos;)" DESCRIPTION ="" EXPRESSION ="&apos;1&apos;" EXPRESSIONTYPE ="GENERAL" NAME ="DUMMY" PICTURETEXT ="" PORTTYPE ="OUTPUT" PRECISION ="10" SCALE ="0"/>
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" EXPRESSION ="IIF(NumRowsAffected&lt;0, &apos;&apos; , Abort(SQLError))" EXPRESSIONTYPE ="GENERAL" NAME ="FAILIF" PICTURETEXT ="" PORTTYPE ="LOCAL VARIABLE" PRECISION ="10" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="SQ_DUAL" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Source Qualifier" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="DUMMY_string" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="256" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Sql Query" VALUE ="SELECT 1 from sysibm.sysdummy1"/>
+            <TABLEATTRIBUTE NAME ="User Defined Join" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Source Filter" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Number Of Sorted Ports" VALUE ="0"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+            <TABLEATTRIBUTE NAME ="Select Distinct" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Is Partitionable" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Pre SQL" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Post SQL" VALUE =""/>
+            <TABLEATTRIBUTE NAME ="Output is deterministic" VALUE ="NO"/>
+            <TABLEATTRIBUTE NAME ="Output is repeatable" VALUE ="Never"/>
+        </TRANSFORMATION>
+        <TRANSFORMATION DESCRIPTION ="" NAME ="FI_all" OBJECTVERSION ="1" REUSABLE ="NO" TYPE ="Filter" VERSIONNUMBER ="1">
+            <TRANSFORMFIELD DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="" NAME ="DUMMY" PICTURETEXT ="" PORTTYPE ="INPUT/OUTPUT" PRECISION ="10" SCALE ="0"/>
+            <TABLEATTRIBUTE NAME ="Filter Condition" VALUE ="FALSE"/>
+            <TABLEATTRIBUTE NAME ="Tracing Level" VALUE ="Normal"/>
+        </TRANSFORMATION>
+        <INSTANCE DESCRIPTION ="" NAME ="EMAIL_CLICK" TRANSFORMATION_NAME ="EMAIL_CLICK" TRANSFORMATION_TYPE ="Target Definition" TYPE ="TARGET"/>
+        <INSTANCE DESCRIPTION ="" NAME ="SQL" REUSABLE ="NO" TRANSFORMATION_NAME ="SQL" TRANSFORMATION_TYPE ="Custom Transformation" TYPE ="TRANSFORMATION"/>
+        <INSTANCE DESCRIPTION ="" NAME ="EX_handle_error" REUSABLE ="NO" TRANSFORMATION_NAME ="EX_handle_error" TRANSFORMATION_TYPE ="Expression" TYPE ="TRANSFORMATION"/>
+        <INSTANCE DBDNAME ="KAMP_TOOL" DESCRIPTION ="" NAME ="DUAL" TRANSFORMATION_NAME ="DUAL" TRANSFORMATION_TYPE ="Source Definition" TYPE ="SOURCE"/>
+        <INSTANCE DESCRIPTION ="" NAME ="SQ_DUAL" REUSABLE ="NO" TRANSFORMATION_NAME ="SQ_DUAL" TRANSFORMATION_TYPE ="Source Qualifier" TYPE ="TRANSFORMATION">
+            <ASSOCIATED_SOURCE_INSTANCE NAME ="DUAL"/>
+        </INSTANCE>
+        <INSTANCE DESCRIPTION ="" NAME ="FI_all" REUSABLE ="NO" TRANSFORMATION_NAME ="FI_all" TRANSFORMATION_TYPE ="Filter" TYPE ="TRANSFORMATION"/>
+        <CONNECTOR FROMFIELD ="DUMMY" FROMINSTANCE ="FI_all" FROMINSTANCETYPE ="Filter" TOFIELD ="EMAIL_CLICK_HK" TOINSTANCE ="EMAIL_CLICK" TOINSTANCETYPE ="Target Definition"/>
+        <CONNECTOR FROMFIELD ="DUMMY_string" FROMINSTANCE ="SQ_DUAL" FROMINSTANCETYPE ="Source Qualifier" TOFIELD ="DUMMY" TOINSTANCE ="SQL" TOINSTANCETYPE ="Custom Transformation"/>
+        <CONNECTOR FROMFIELD ="SQLError" FROMINSTANCE ="SQL" FROMINSTANCETYPE ="Custom Transformation" TOFIELD ="SQLError" TOINSTANCE ="EX_handle_error" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="NumRowsAffected" FROMINSTANCE ="SQL" FROMINSTANCETYPE ="Custom Transformation" TOFIELD ="NumRowsAffected" TOINSTANCE ="EX_handle_error" TOINSTANCETYPE ="Expression"/>
+        <CONNECTOR FROMFIELD ="DUMMY" FROMINSTANCE ="EX_handle_error" FROMINSTANCETYPE ="Expression" TOFIELD ="DUMMY" TOINSTANCE ="FI_all" TOINSTANCETYPE ="Filter"/>
+        <CONNECTOR FROMFIELD ="DUMMY_string" FROMINSTANCE ="DUAL" FROMINSTANCETYPE ="Source Definition" TOFIELD ="DUMMY_string" TOINSTANCE ="SQ_DUAL" TOINSTANCETYPE ="Source Qualifier"/>
+        <TARGETLOADORDER ORDER ="1" TARGETINSTANCE ="EMAIL_CLICK"/>
+        <ERPINFO/>
+    </MAPPING>
+    <WORKFLOW DESCRIPTION ="" ISENABLED ="YES" ISRUNNABLESERVICE ="NO" ISSERVICE ="NO" ISVALID ="YES" NAME ="{{wf_name}}" REUSABLE_SCHEDULER ="NO" SCHEDULERNAME ="Scheduler" SERVERNAME ="INT_SVC" SERVER_DOMAINNAME ="ETLD" SUSPEND_ON_ERROR ="NO" TASKS_MUST_RUN_ON_SERVER ="NO" VERSIONNUMBER ="1">
+        <SCHEDULER DESCRIPTION ="" NAME ="Scheduler" REUSABLE ="NO" VERSIONNUMBER ="1">
+            <SCHEDULEINFO SCHEDULETYPE ="ONDEMAND"/>
+        </SCHEDULER>
+        <TASK DESCRIPTION ="" NAME ="Start" REUSABLE ="NO" TYPE ="Start" VERSIONNUMBER ="1"/>
+        <SESSION DESCRIPTION ="" ISVALID ="YES" MAPPINGNAME ="{{map_name}}" NAME ="{{ses_name}}" REUSABLE ="NO" SORTORDER ="Binary" VERSIONNUMBER ="1">
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="YES" PARTITIONTYPE ="PASS THROUGH" PIPELINE ="1" SINSTANCENAME ="EMAIL_CLICK" STAGE ="1" TRANSFORMATIONNAME ="EMAIL_CLICK" TRANSFORMATIONTYPE ="Target Definition"/>
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="0" SINSTANCENAME ="DUAL" STAGE ="0" TRANSFORMATIONNAME ="DUAL" TRANSFORMATIONTYPE ="Source Definition"/>
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="YES" PARTITIONTYPE ="PASS THROUGH" PIPELINE ="1" SINSTANCENAME ="SQ_DUAL" STAGE ="2" TRANSFORMATIONNAME ="SQ_DUAL" TRANSFORMATIONTYPE ="Source Qualifier"/>
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="FI_all" STAGE ="2" TRANSFORMATIONNAME ="FI_all" TRANSFORMATIONTYPE ="Filter">
+                <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+            </SESSTRANSFORMATIONINST>
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="SQL" STAGE ="2" TRANSFORMATIONNAME ="SQL" TRANSFORMATIONTYPE ="Custom Transformation">
+                <SESSTRANSFORMATIONGROUP GROUP ="SQLInputs"/>
+                <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+            </SESSTRANSFORMATIONINST>
+            <SESSTRANSFORMATIONINST ISREPARTITIONPOINT ="NO" PIPELINE ="1" SINSTANCENAME ="EX_handle_error" STAGE ="2" TRANSFORMATIONNAME ="EX_handle_error" TRANSFORMATIONTYPE ="Expression">
+                <PARTITION DESCRIPTION ="" NAME ="Partition #1"/>
+            </SESSTRANSFORMATIONINST>
+            <CONFIGREFERENCE REFOBJECTNAME ="default_session_config" TYPE ="Session config"/>
+            <SESSIONEXTENSION NAME ="Relational Writer" SINSTANCENAME ="EMAIL_CLICK" SUBTYPE ="Relational Writer" TRANSFORMATIONTYPE ="Target Definition" TYPE ="WRITER">
+                <CONNECTIONREFERENCE CNXREFNAME ="DB Connection" CONNECTIONNAME ="" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="" CONNECTIONTYPE ="Relational" VARIABLE ="$Target"/>
+                <ATTRIBUTE NAME ="Target load type" VALUE ="Normal"/>
+                <ATTRIBUTE NAME ="Insert" VALUE ="YES"/>
+                <ATTRIBUTE NAME ="Update as Update" VALUE ="NO"/>
+                <ATTRIBUTE NAME ="Update as Insert" VALUE ="NO"/>
+                <ATTRIBUTE NAME ="Update else Insert" VALUE ="NO"/>
+                <ATTRIBUTE NAME ="Delete" VALUE ="NO"/>
+                <ATTRIBUTE NAME ="Truncate target table option" VALUE ="NO"/>
+                <ATTRIBUTE NAME ="Reject file directory" VALUE ="$PMBadFileDir&#x5c;{{infa_project}}&#x5c;BadFiles&#x5c;"/>
+                <ATTRIBUTE NAME ="Reject filename" VALUE ="email_click1.bad"/>
+            </SESSIONEXTENSION>
+            <SESSIONEXTENSION DSQINSTNAME ="SQ_DUAL" DSQINSTTYPE ="Source Qualifier" NAME ="Relational Reader" SINSTANCENAME ="DUAL" SUBTYPE ="Relational Reader" TRANSFORMATIONTYPE ="Source Definition" TYPE ="READER"/>
+            <SESSIONEXTENSION NAME ="Relational Reader" SINSTANCENAME ="SQ_DUAL" SUBTYPE ="Relational Reader" TRANSFORMATIONTYPE ="Source Qualifier" TYPE ="READER">
+                <CONNECTIONREFERENCE CNXREFNAME ="DB Connection" CONNECTIONNAME ="" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="" CONNECTIONTYPE ="Relational" VARIABLE ="$Source"/>
+            </SESSIONEXTENSION>
+            <SESSIONEXTENSION COMPONENTVERSION ="1000000" NAME ="SQL Transform Midstream Extension" SINSTANCENAME ="SQL" SUBTYPE ="SQL Transform Midstream Extension" TRANSFORMATIONTYPE ="Custom Transformation" TYPE ="TEMPLATEEXTENSION">
+                <CONNECTIONREFERENCE CNXREFNAME ="SQL_Transform" CONNECTIONNAME ="" CONNECTIONNUMBER ="1" CONNECTIONSUBTYPE ="" CONNECTIONTYPE ="Relational" VARIABLE ="$Target"/>
+            </SESSIONEXTENSION>
+            <ATTRIBUTE NAME ="General Options" VALUE =""/>
+            <ATTRIBUTE NAME ="Write Backward Compatible Session Log File" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Session Log File Name" VALUE ="{{ses_name}}.log"/>
+            <ATTRIBUTE NAME ="Session Log File directory" VALUE ="$PMSessionLogDir&#x5c;{{infa_project}}&#x5c;Sesslogs&#x5c;"/>
+            <ATTRIBUTE NAME ="Parameter Filename" VALUE =""/>
+            <ATTRIBUTE NAME ="Enable Test Load" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="$Source connection value" VALUE ="Relational:{{source_connection}}"/>
+            <ATTRIBUTE NAME ="$Target connection value" VALUE ="Relational:{{target_connection}}"/>
+            <ATTRIBUTE NAME ="Treat source rows as" VALUE ="Insert"/>
+            <ATTRIBUTE NAME ="Commit Type" VALUE ="Target"/>
+            <ATTRIBUTE NAME ="Commit Interval" VALUE ="10000"/>
+            <ATTRIBUTE NAME ="Commit On End Of File" VALUE ="YES"/>
+            <ATTRIBUTE NAME ="Rollback Transactions on Errors" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Recovery Strategy" VALUE ="Fail task and continue workflow"/>
+            <ATTRIBUTE NAME ="Java Classpath" VALUE =""/>
+            <ATTRIBUTE NAME ="Performance" VALUE =""/>
+            <ATTRIBUTE NAME ="DTM buffer size" VALUE ="Auto"/>
+            <ATTRIBUTE NAME ="Collect performance data" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Write performance data to repository" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Incremental Aggregation" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Enable high precision" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Session retry on deadlock" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Pushdown Optimization" VALUE ="None"/>
+            <ATTRIBUTE NAME ="Allow Temporary View for Pushdown" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Allow Temporary Sequence for Pushdown" VALUE ="NO"/>
+            <ATTRIBUTE NAME ="Allow Pushdown for User Incompatible Connections" VALUE ="NO"/>
+        </SESSION>
+        <TASKINSTANCE DESCRIPTION ="" FAIL_PARENT_IF_INSTANCE_DID_NOT_RUN ="NO" FAIL_PARENT_IF_INSTANCE_FAILS ="NO" ISENABLED ="YES" NAME ="{{ses_name}}" REUSABLE ="NO" TASKNAME ="{{ses_name}}" TASKTYPE ="Session" TREAT_INPUTLINK_AS_AND ="YES"/>
+        <TASKINSTANCE DESCRIPTION ="" ISENABLED ="YES" NAME ="Start" REUSABLE ="NO" TASKNAME ="Start" TASKTYPE ="Start"/>
+        <WORKFLOWLINK CONDITION ="" FROMTASK ="Start" TOTASK ="{{ses_name}}"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task started" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.StartTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task completed" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.EndTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.Status" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of the previous task that is not disabled" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.PrevTaskStatus" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Error code for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.ErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="Error message for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.ErrorMsg" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Rows successfully read" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.SrcSuccessRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Rows failed to read" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.SrcFailedRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Rows successfully loaded" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.TgtSuccessRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Rows failed to load" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.TgtFailedRows" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Total number of transformation errors" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.TotalTransErrors" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="First error code" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.FirstErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="First error message" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="${{ses_name}}.FirstErrorMsg" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task started" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.StartTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="date/time" DEFAULTVALUE ="" DESCRIPTION ="The time this task completed" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.EndTime" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.Status" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Status of the previous task that is not disabled" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.PrevTaskStatus" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="integer" DEFAULTVALUE ="" DESCRIPTION ="Error code for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.ErrorCode" USERDEFINED ="NO"/>
+        <WORKFLOWVARIABLE DATATYPE ="string" DEFAULTVALUE ="" DESCRIPTION ="Error message for this task&apos;s execution" ISNULL ="NO" ISPERSISTENT ="NO" NAME ="$Start.ErrorMsg" USERDEFINED ="NO"/>
+        <ATTRIBUTE NAME ="Parameter Filename" VALUE =""/>
+        <ATTRIBUTE NAME ="Write Backward Compatible Workflow Log File" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Workflow Log File Name" VALUE ="{{wf_name}}.log"/>
+        <ATTRIBUTE NAME ="Workflow Log File Directory" VALUE ="$PMWorkflowLogDir&#x5c;{{infa_project}}&#x5c;WorkflowLogs&#x5c;"/>
+        <ATTRIBUTE NAME ="Save Workflow log by" VALUE ="By runs"/>
+        <ATTRIBUTE NAME ="Save workflow log for these runs" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Service Name" VALUE =""/>
+        <ATTRIBUTE NAME ="Service Timeout" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Is Service Visible" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Is Service Protected" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Fail task after wait time" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Enable HA recovery" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Automatically recover terminated tasks" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Service Level Name" VALUE ="Default"/>
+        <ATTRIBUTE NAME ="Allow concurrent run with unique run instance name" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Allow concurrent run with same run instance name" VALUE ="NO"/>
+        <ATTRIBUTE NAME ="Maximum number of concurrent runs" VALUE ="0"/>
+        <ATTRIBUTE NAME ="Assigned Web Services Hubs" VALUE =""/>
+        <ATTRIBUTE NAME ="Maximum number of concurrent runs per Hub" VALUE ="1000"/>
+        <ATTRIBUTE NAME ="Expected Service Time" VALUE ="1"/>
+    </WORKFLOW>
+</FOLDER>
+</REPOSITORY>
+</POWERMART>
